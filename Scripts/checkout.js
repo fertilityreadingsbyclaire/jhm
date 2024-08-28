@@ -1,10 +1,14 @@
-import { cartData } from "../Data/cartData.js";
+import { cartData, saveCartToStorage } from "../Data/cartData.js";
 import { calcuCartTotalPrice, totalPrice } from "../Utils/calcuCartPrice.js";
 import { donationData } from "../Data/dontationData.js";
 import { popMenu } from "../Utils/pop-menu.js";
 
 calcuCartTotalPrice();
 popMenu();
+
+if (cartData.length === 1) {
+  location.replace("donate.html");
+}
 
 document.querySelector(".orders").innerHTML = cartData
   .map((order) => {
@@ -147,9 +151,12 @@ document.querySelector("form").addEventListener("submit", (e) => {
     .join("");
 
   Email.send({
-    SecureToken: "e94aeb98-35d8-4774-adf1-0cb05cfd06c0",
-    To: "fertilityreadingsbyclaire@gmail.com",
-    From: "fertilityreadingsbyclaire@gmail.com",
+    // SecureToken: "e94aeb98-35d8-4774-adf1-0cb05cfd06c0",
+    // To: "fertilityreadingsbyclaire@gmail.com",
+    // From: "fertilityreadingsbyclaire@gmail.com",
+    SecureToken: "df8f40ea-1dd8-472f-8275-cb1c21b6e940",
+    To: "wardude704@gmail.com",
+    From: "wardude704@gmail.com",
     Subject: "Order Details From Church Website",
     Body: `
       Title: ;
@@ -172,6 +179,9 @@ document.querySelector("form").addEventListener("submit", (e) => {
 
   document.querySelector(".loader").classList.remove("hide-loader");
   document.querySelector("section").classList.add("hide-loader");
+
+  cartData.length = 0;
+  saveCartToStorage();
   setTimeout(() => {
     window.location.href = "sucess.html";
   }, 2000);
