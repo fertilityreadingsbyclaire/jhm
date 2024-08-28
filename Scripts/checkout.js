@@ -146,7 +146,7 @@ document.querySelector("form").addEventListener("submit", (e) => {
 
   const order = productMatch
     .map((elem) => {
-      return `price:{ ${elem.price}, productName: ${elem.title} }<br>`;
+      return `{price: ${elem.price}, productName: ${elem.title} }<br>`;
     })
     .join("");
 
