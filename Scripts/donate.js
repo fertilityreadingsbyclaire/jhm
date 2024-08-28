@@ -120,7 +120,6 @@ function updatePage() {
       });
       saveCartToStorage();
       calcuCartTotalPrice();
-      updatePage();
 
       let productMatch;
       donationData.forEach((elem) => {
@@ -153,13 +152,14 @@ function updatePage() {
       </div>
       <div class="pop-bottom">
         <a href="checkout.html" class="checkout-link">PROCEED TO CHECKOUT</a>
-        <a href="donate.html" class="shop-link">Continue Shopping</a>
+        <a href="donate.html"  class="shop-link">Continue Shopping</a>
       </div>
       </div>`;
       console.log(totalPrice);
 
       document.querySelector(".pop-note-cont").style.display = "flex";
       document.querySelector(".pop-note").style.display = "flex";
+      updatePage();
     });
 
   document.querySelector(".hide").addEventListener("click", () => {
